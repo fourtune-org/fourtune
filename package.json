@@ -1,0 +1,24 @@
+{
+  "name": "fourtune",
+  "version": "0.0.0",
+  "description": "",
+  "author": "Anio Software <info@anio.software>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fourtune-org/fourtune.git"
+  },
+  "exports": {
+    ".": "./src/index.mjs",
+    "./autogenerate": "./src/autogenerate/index.mjs",
+    "./processing": "./src/processing/index.mjs"
+  },
+  "bin": {
+    "fourtune": "./src/cli.mjs"
+  },
+  "dependencies": {
+    "@anio-js-foundation/str-colorize": "2.1.0",
+    "@anio-node-foundation/cli-parse-args": "3.0.0",
+    "@anio-software/fs": "0.1.1"
+  }
+}
