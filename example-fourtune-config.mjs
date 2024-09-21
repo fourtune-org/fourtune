@@ -14,6 +14,15 @@ export default {
 	platform: ["linux",  "arduino"],
 
 	//
+	// run this before initializing
+	// this is here to create files before fourtune
+	// is analyzing the project structure
+	//
+	preinit: [
+
+	],
+
+	//
 	// short hand for search and replace pre-processing,
 	//
 	build_constants: {

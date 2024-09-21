@@ -4,6 +4,22 @@ import stages from "./stages/index.mjs"
 export default async function(project_root) {
 	const fourtune_session = await createFourtuneSession(project_root)
 
+	if ("preinit" in fourtune_session.project.config) {
+		const {preinit} = fourtune_session.project.config
+
+		if (!Array.isArray(preinit)) {
+			throw new Error(
+				`preinit must be an array of functions.`
+			)
+		}
+
+		for (const fn of preinit) {
+			await fn(
+				fourtune_session.public_interface
+			)
+		}
+	}
+
 	await fourtune_session.initializeTarget()
 
 	for (const stage of stages) {
