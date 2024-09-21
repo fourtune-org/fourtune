@@ -10,6 +10,15 @@ export default function(source_path, items) {
 		for (const search in items) {
 			const replace = items[search]
 
+			if (source.indexOf(search) === -1) {
+				fourtune_session.addWarning(
+					`generateFromTemplate.unused_template_key`, {
+						relative_path: source_path,
+						key: search
+					}
+				)
+			}
+
 			source = source.split(search).join(replace)
 		}
 
