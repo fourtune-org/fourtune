@@ -10,8 +10,7 @@
   },
   "exports": {
     ".": "./src/index.mjs",
-    "./autogenerate": "./src/autogenerate/index.mjs",
-    "./processing": "./src/processing/index.mjs"
+    "./autogenerate": "./src/autogenerate/index.mjs"
   },
   "bin": {
     "fourtune": "./src/cli.mjs"
