@@ -5,6 +5,8 @@ export default async function(fourtune_session) {
 		fourtune_session.public_interface
 	)
 
+	fourtune_session.target_hooks_locked = true
+
 	//
 	// examine config.autogenerate and friends
 	//

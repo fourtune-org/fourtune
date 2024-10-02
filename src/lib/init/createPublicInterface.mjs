@@ -25,6 +25,21 @@ export default function(fourtune_session) {
 		distributables: {},
 
 		//
+		// used to hook into fourtune
+		//
+		hooks: {
+			register(name, fn) {
+				if (fourtune_session.target_hooks_locked) {
+					throw new Error(
+						`Cannot add hooks after target initialisation!`
+					)
+				}
+
+				fourtune_session.target_hooks.push({name, fn})
+			}
+		},
+
+		//
 		// used for targets to set target specific data
 		//
 		target: {
