@@ -27,7 +27,7 @@ export default async function(project_root) {
 
 		async runTargetHooks(id) {
 			const hooks = fourtune_session.target_hooks.filter(hook => {
-				return hook.id !== id
+				return hook.id === id
 			})
 
 			for (const hook of hooks) {

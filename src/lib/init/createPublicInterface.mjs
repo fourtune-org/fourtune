@@ -28,14 +28,14 @@ export default function(fourtune_session) {
 		// used to hook into fourtune
 		//
 		hooks: {
-			register(name, fn) {
+			register(id, fn) {
 				if (fourtune_session.target_hooks_locked) {
 					throw new Error(
 						`Cannot add hooks after target initialisation!`
 					)
 				}
 
-				fourtune_session.target_hooks.push({name, fn})
+				fourtune_session.target_hooks.push({id, fn})
 			}
 		},
 
