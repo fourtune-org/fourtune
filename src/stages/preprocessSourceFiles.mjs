@@ -43,16 +43,23 @@ export default async function(fourtune_session) {
 		const destination_path = path.join(fourtune_session.project.root, "build", "src", relative_path)
 
 		const content = (await fs.readFile(source_path)).toString()
-		const transformed_source_code = await preprocess.transformSourceCode(relative_path, content)
+		let transformed_source_code = await preprocess.transformSourceCode(relative_path, content)
 
-		//
-		// 'null' means copy the file and do not process the file
-		//
 		if (transformed_source_code === null) {
-			await fs.copyFile(source_path, destination_path)
-		} else {
-			await writeAtomicFile(destination_path, transformed_source_code)
+			transformed_source_code = (await fs.readFile(
+				source_path
+			)).toString()
 		}
+
+		const transform_hooks = fourtune_session.target_hooks.filter(({id}) => id === "preprocess_file")
+
+		for (const {fn} of transform_hooks) {
+			transformed_source_code = await fn(
+				fourtune_session.public_interface, relative_path, transformed_source_code
+			)
+		}
+
+		await writeAtomicFile(destination_path, transformed_source_code)
 	}
 
 	for (const fn of preprocess.runCustomFunctions) {

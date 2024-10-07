@@ -1,4 +1,4 @@
-export default {
+export const c = {
 
 	// @fourtune/realm-js,     platform: js
 	// @fourtune/realm-web     platform: web
@@ -99,3 +99,64 @@ config flavours:
 2.) run preprocessing? -> place preprocessed files in build/ 
 3.) run build -> place built files in dist/
 4.) run postprocessing
+
+
+
+
+//----
+import {defineTarget} from "@fourtune/realm-js"
+
+//
+//
+//      src/auto/
+//              export/
+//                     different/
+//                          something.mjs
+//
+//      src/export
+//                /default/
+//                        another.mjs
+//                /different/
+//                      something.mjs
+//                      somethingElse.mjs
+//                something.mjs
+
+/*
+	./dist/default/module.mjs
+	./dist/default/module.min.mjs
+	./dist/default/source.mjs
+	./dist/default/source.min.mjs
+	./dist/default/types.d.ts
+
+	./dist/different/module.mjs
+	./dist/different/module.min.mjs
+	./dist/different/source.mjs
+	./dist/different/source.min.mjs
+	./dist/different/types.d.ts
+*/
+
+// merge src/auto/export AND src/export
+// merge src/export/*.mjs AND src/export/default/
+
+// prioritize src/auto/export OVER src/export
+
+export default {
+	project: {
+		realm: "js",
+		//type: "package"
+	},
+
+	target: defineTarget({
+		entry: "./src/index.mjs"
+	})
+
+	/*
+	target: {
+		entries: [{
+			name: "main",
+			entry: "./src/index.mjs",
+			types: "./src/index.d.ts",
+			bundle: true
+		}]
+	}*/
+}
