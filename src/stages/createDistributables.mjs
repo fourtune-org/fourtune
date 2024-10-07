@@ -2,7 +2,7 @@ import path from "node:path"
 import {writeAtomicFile} from "@anio-software/fs"
 
 export default async function(fourtune_session) {
-	fourtune_session.runTargetHooks("distributables.pre")
+	await fourtune_session.runTargetHooks("distributables.pre")
 
 	for (const {relative_path, generateDistributableFileContents} of fourtune_session.distributables) {
 		const source_code = await generateDistributableFileContents()
@@ -14,5 +14,5 @@ export default async function(fourtune_session) {
 		)
 	}
 
-	fourtune_session.runTargetHooks("distributables.post")
+	await fourtune_session.runTargetHooks("distributables.post")
 }
