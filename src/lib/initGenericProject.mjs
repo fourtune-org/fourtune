@@ -48,6 +48,12 @@ SOFTWARE.\n`
 /build/
 /dist/\n`,
 		overwrite: false
+	},
+
+	{
+		name: "README.md", contents:
+`# README\n`,
+		overwrite: false
 	}
 ]
 
