@@ -1,5 +1,5 @@
 import createFourtuneSession from "./lib/init/createFourtuneSession.mjs"
-import stages from "./stages/index.mjs"
+import build_stages from "./stages/build/index.mjs"
 import process from "node:process"
 import initGenericProject from "./lib/initGenericProject.mjs"
 
@@ -30,7 +30,7 @@ export default async function(project_root, command) {
 		await fourtune_session.initializeTarget()
 
 		if (command === "build") {
-			for (const stage of stages) {
+			for (const stage of build_stages) {
 				await stage(fourtune_session)
 			}
 		} else if (command === "init-project") {
