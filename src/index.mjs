@@ -2,7 +2,7 @@ import createFourtuneSession from "./lib/init/createFourtuneSession.mjs"
 import stages from "./stages/index.mjs"
 import process from "node:process"
 
-export default async function(project_root) {
+export default async function(project_root, command) {
 	const saved_cwd = process.cwd()
 
 	try {
@@ -28,8 +28,14 @@ export default async function(project_root) {
 
 		await fourtune_session.initializeTarget()
 
-		for (const stage of stages) {
-			await stage(fourtune_session)
+		if (command === "build") {
+			for (const stage of stages) {
+				await stage(fourtune_session)
+			}
+		} else if (command === "init-project") {
+			const {initProject} = fourtune_session.target_integration
+
+			await initProject(fourtune_session.public_interface)
 		}
 
 		for (const warning of fourtune_session.project.warnings) {

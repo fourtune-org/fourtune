@@ -5,7 +5,8 @@ import fs from "node:fs/promises"
 import fourtune from "./index.mjs"
 
 const args = await parseCLIArgs(process.argv.slice(2), {
-	min_operands: 1
+	min_operands: 1,
+	flags: ["init-project"]
 })
 
 print.stderr(`Fourtune\n`)
@@ -16,4 +17,7 @@ if (!project_root) {
 	throw new Error(`Unable to resolve ${args.operands[0]}.`)
 }
 
-await fourtune(project_root)
+await fourtune(
+	project_root,
+	args.flags.includes("init-project") ? "init-project" : "build"
+)
