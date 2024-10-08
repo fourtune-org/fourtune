@@ -1,6 +1,7 @@
 import createFourtuneSession from "./lib/init/createFourtuneSession.mjs"
 import stages from "./stages/index.mjs"
 import process from "node:process"
+import initGenericProject from "./lib/initGenericProject.mjs"
 
 export default async function(project_root, command) {
 	const saved_cwd = process.cwd()
@@ -33,9 +34,13 @@ export default async function(project_root, command) {
 				await stage(fourtune_session)
 			}
 		} else if (command === "init-project") {
-			const {initProject} = fourtune_session.target_integration
+			await initGenericProject(fourtune_session.public_interface)
 
-			await initProject(fourtune_session.public_interface)
+			if ("initProject" in fourtune_session.target_integration) {
+				const {initProject} = fourtune_session.target_integration
+
+				await initProject(fourtune_session.public_interface)
+			}
 		}
 
 		for (const warning of fourtune_session.project.warnings) {
