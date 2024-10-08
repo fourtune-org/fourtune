@@ -1,5 +1,4 @@
-import {writeAtomicFile} from "@anio-software/fs"
-import path from "node:path"
+import writeProjectInitFile from "./writeProjectInitFile.mjs"
 
 const files = [
 	{
@@ -59,23 +58,10 @@ SOFTWARE.\n`
 
 export default async function(fourtune_session) {
 	for (const file of files) {
-		const {name, contents} = file
-		let overwrite = false
+		let overwrite = "overwrite" in file ? file.overwrite : true
 
-		if (!("overwrite" in file)) {
-			overwrite = true
-		} else {
-			overwrite = file.overwrite
-		}
-
-		if (overwrite) {
-			await writeAtomicFile(
-				path.join(fourtune_session.getProjectRoot(), name), contents
-			)
-		} else {
-			fourtune_session.addWarning(
-				`overwrite`, `Not overwriting already present file "${name}".`
-			)
-		}
+		await writeProjectInitFile(
+			fourtune_session, file, overwrite
+		)
 	}
 }
