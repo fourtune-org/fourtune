@@ -14,7 +14,9 @@ export default async function(
 
 	if (do_write) {
 		await writeAtomicFile(
-			absolute_path, contents
+			absolute_path, contents, {
+				create_parents: true
+			}
 		)
 	} else {
 		fourtune_session.addWarning(
