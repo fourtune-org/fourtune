@@ -1,5 +1,10 @@
 import path from "node:path"
 
+import {
+	generateFromTemplate,
+	generateSyncAsyncVariant
+} from "../../autogenerate/index.mjs"
+
 function parents(relative_path) {
 	let parents = path.dirname(relative_path).split(path.sep)
 
@@ -81,7 +86,10 @@ export default function(fourtune_session) {
 				return createSyntheticScandirResult(
 					fourtune_session.project.root, fourtune_session.files_to_autogenerate, sub_dir
 				)
-			}
+			},
+
+			generateFromTemplate,
+			generateSyncAsyncVariant
 		},
 
 		distributables: {},
