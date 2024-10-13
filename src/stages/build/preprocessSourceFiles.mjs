@@ -59,7 +59,29 @@ export default async function(fourtune_session) {
 			)
 		}
 
-		await writeAtomicFile(destination_path, transformed_source_code)
+		const is_string = Object.prototype.toString.call(transformed_source_code).toLowerCase() === `[object string]`
+
+		// if transformed_source_code is a simple string, use this
+		if (is_string) {
+			await writeAtomicFile(destination_path, transformed_source_code)
+		} else {
+			// transformed_source_code must be an object that contains
+			// two properties: new_filename and code
+			// also: can be an array of those objects!
+			const transformations = Array.isArray(
+				transformed_source_code
+			) ? transformed_source_code : [transformed_source_code]
+
+			for (const {new_filename, code} of transformations) {
+				await writeAtomicFile(
+					path.join(
+						path.dirname(destination_path),
+						new_filename
+					),
+					code
+				)
+			}
+		}
 	}
 
 	for (const fn of preprocess.runCustomFunctions) {
