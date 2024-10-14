@@ -39,6 +39,8 @@ export default function(fourtune_session) {
 			generateSyncAsyncVariant
 		},
 
+		objects: {},
+
 		distributables: {},
 
 		//
@@ -79,6 +81,17 @@ export default function(fourtune_session) {
 		fourtune_session.files_to_autogenerate.push({
 			file_path,
 			async generateFileSourceCode() {
+				return await generator(public_interface, file_path, ...generator_args)
+			}
+		})
+	}
+
+	public_interface.objects.add = function addObject(
+		file_path, {generator, generator_args}
+	) {
+		fourtune_session.objects_to_generate.push({
+			file_path,
+			async generateObject() {
 				return await generator(public_interface, file_path, ...generator_args)
 			}
 		})

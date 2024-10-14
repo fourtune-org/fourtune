@@ -20,6 +20,7 @@ export default async function(project_root) {
 		source_files: [],
 
 		files_to_autogenerate: [],
+		objects_to_generate: [],
 		distributables: [],
 
 		target_integration,

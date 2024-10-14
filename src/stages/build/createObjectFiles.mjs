@@ -9,8 +9,8 @@ export default async function(fourtune_session) {
 	//
 	await fourtune_session.runTargetHooks("objects.pre")
 
-	for (const entry of entries) {
-		//console.log(entry)
+	for (const entry of fourtune_session.objects_to_generate) {
+		console.log(entry)
 	}
 
 	await fourtune_session.runTargetHooks("objects.post")
