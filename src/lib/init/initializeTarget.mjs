@@ -42,6 +42,7 @@ export default async function(fourtune_session) {
 			const relative_path = path.join("src", "auto", entry.create)
 			const absolute_path = path.join(fourtune_session.project.root, relative_path)
 
+			// todo: this is using OLD api and doesn't work
 			fourtune_session.files_to_autogenerate.push({
 				relative_path,
 				absolute_path ,
