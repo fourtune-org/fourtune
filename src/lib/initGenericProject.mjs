@@ -45,6 +45,7 @@ SOFTWARE.\n`
 /node_modules/
 /.fourtune/
 /build/
+/objects/
 /dist/\n`,
 		overwrite: false
 	},
