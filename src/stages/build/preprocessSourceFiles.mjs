@@ -9,6 +9,8 @@ function defaultTransformSourceCode(relative_path, contents) {
 export default async function(fourtune_session) {
 	let preprocess = {}
 
+	await fourtune_session.runTargetHooks("preprocess.pre")
+
 	if (Array.isArray(fourtune_session.project.config.preprocess)) {
 		preprocess.transformSourceCode = defaultTransformSourceCode
 
@@ -87,4 +89,6 @@ export default async function(fourtune_session) {
 	for (const fn of preprocess.runCustomFunctions) {
 		await fn()
 	}
+
+	await fourtune_session.runTargetHooks("preprocess.post")
 }
