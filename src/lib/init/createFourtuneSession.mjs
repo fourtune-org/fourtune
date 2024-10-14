@@ -17,6 +17,8 @@ export default async function(project_root) {
 			warnings: []
 		},
 
+		source_files: [],
+
 		files_to_autogenerate: [],
 		distributables: [],
 

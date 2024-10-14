@@ -1,6 +1,24 @@
 import path from "node:path"
+import {scandir} from "@anio-software/fs"
 
 export default async function(fourtune_session) {
+	//
+	// src/auto files will be provided virtually
+	// since some of the auto-generated files might not exist on
+	// disk yet
+	//
+	fourtune_session.source_files = await scandir(
+		path.join(fourtune_session.project.root, "src"), {
+			filter({type, parents}) {
+				if (type !== "file") return false
+
+				if (parents.length && parents[0] === "auto") return false
+
+				return true
+			}
+		}
+	)
+
 	//
 	// examine config.autogenerate:
 	//
