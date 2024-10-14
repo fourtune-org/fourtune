@@ -1,3 +1,4 @@
+import {writeAtomicFile} from "@anio-software/fs"
 import path from "node:path"
 
 export default async function(fourtune_session) {
@@ -9,8 +10,14 @@ export default async function(fourtune_session) {
 	//
 	await fourtune_session.runTargetHooks("objects.pre")
 
-	for (const entry of fourtune_session.objects_to_generate) {
-		console.log(entry)
+	for (const {file_path, generateObject} of fourtune_session.objects_to_generate) {
+		const destination_path = path.join(
+			project_root, "objects", "src", file_path
+		)
+
+		await writeAtomicFile(
+			destination_path, await generateObject()
+		)
 	}
 
 	await fourtune_session.runTargetHooks("objects.post")
