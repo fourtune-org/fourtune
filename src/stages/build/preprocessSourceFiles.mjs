@@ -1,4 +1,4 @@
-import {scandir, writeAtomicFile} from "@anio-software/fs"
+import {writeAtomicFile} from "@anio-software/fs"
 import path from "node:path"
 import fs from "node:fs/promises"
 
@@ -29,16 +29,7 @@ export default async function(fourtune_session) {
 		}
 	}
 
-	//
-	// scan src/ for files place them inside build/
-	//
-	const source_files = await scandir(
-		path.join(fourtune_session.project.root, "src"), {
-			filter({type}) {
-				return type === "file"
-			}
-		}
-	)
+	const source_files = fourtune_session.public_interface.getProjectSourceFiles()
 
 	for (const {relative_path} of source_files) {
 		const source_path = path.join(fourtune_session.project.root, "src", relative_path)
