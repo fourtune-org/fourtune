@@ -5,3 +5,7 @@ export {
 export {
 	default as generateSyncAsyncVariant
 } from "./generateSyncAsyncVariant.mjs"
+
+export {
+	default as generateSyncAsyncVariantFromString
+}from "./generateSyncAsyncVariantFromString.mjs"
