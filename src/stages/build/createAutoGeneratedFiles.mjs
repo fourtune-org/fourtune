@@ -11,6 +11,6 @@ export default async function(fourtune_session) {
 			}
 		)
 
-		console.log(`\\---> wrote auto file at src/auto/${file_path}`)
+//		console.log(`\\---> wrote auto file at src/auto/${file_path}`)
 	}
 }
