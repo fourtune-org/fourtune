@@ -31,6 +31,10 @@ export default function(fourtune_session) {
 			fourtune_session.project.warnings.push({id, message})
 		},
 
+		emitError(id, message) {
+			process.stderr.write(`!!! [fourtune] ${id} ${message}\n`)
+		},
+
 		autogenerate: {
 			warningComment() {
 				return `// Warning: this file was automatically created by fourtune vXXXXX
