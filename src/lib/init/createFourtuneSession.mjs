@@ -21,6 +21,7 @@ export default async function(project_root) {
 
 		files_to_autogenerate: [],
 		objects_to_generate: [],
+		ephemerals: [],
 		distributables: [],
 
 		target_integration,

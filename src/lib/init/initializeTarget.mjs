@@ -48,6 +48,15 @@ export default async function(fourtune_session) {
 		}
 	}
 
+	//
+	if ("ephemerals" in fourtune_session.project.config) {
+		const {ephemerals} = fourtune_session.project.config
+
+		for (const entry of ephemerals) {
+			fourtune_session.ephemerals.push(entry)
+		}
+	}
+
 	await fourtune_session.target_integration.initializeTarget(
 		fourtune_session.public_interface
 	)
