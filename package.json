@@ -10,6 +10,14 @@
   },
   "exports": {
     ".": "./src/index.mjs",
+    "./base-realm": {
+      "import": "./src/base-realm/index.mjs",
+      "types": "./src/base-realm/index.d.mts"
+    },
+    "./base-realm/version": {
+      "import": "./src/base-realm/version.mjs",
+      "types": "./src/base-realm/version.d.mts"
+    },
     "./autogenerate": "./src/autogenerate/index.mjs",
     "./fs": "./src/fs/index.mjs"
   },
