@@ -12,7 +12,7 @@ export default async function(fourtune_session) {
 
 	for (const {file_path, generateObject} of fourtune_session.objects_to_generate) {
 		const destination_path = path.join(
-			project_root, "objects", "src", file_path
+			project_root, "objects", file_path
 		)
 
 		await writeAtomicFile(
