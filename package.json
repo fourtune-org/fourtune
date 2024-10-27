@@ -19,7 +19,10 @@
       "types": "./src/base-realm/version.d.mts"
     },
     "./autogenerate": "./src/autogenerate/index.mjs",
-    "./fs": "./src/fs/index.mjs"
+    "./fs": {
+      "import": "./src/fs/index.mjs",
+      "types": "./src/fs/index.d.ts"
+    }
   },
   "bin": {
     "fourtune": "./src/cli.mjs"
