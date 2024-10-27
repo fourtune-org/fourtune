@@ -3,7 +3,7 @@ import {scandir} from "@anio-software/fs"
 
 export default async function(fourtune_session) {
 	//
-	// src/auto files will be provided virtually
+	// auto/src files will be provided virtually
 	// since some of the auto-generated files might not exist on
 	// disk yet
 	//

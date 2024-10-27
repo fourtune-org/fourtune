@@ -6,7 +6,7 @@ export default async function(fourtune_session) {
 		const source_code = await generateFileSourceCode()
 
 		await writeAtomicFile(
-			path.join(fourtune_session.project.root, "src", "auto", file_path), source_code, {
+			path.join(fourtune_session.project.root, "auto", file_path), source_code, {
 				create_parents: true
 			}
 		)
