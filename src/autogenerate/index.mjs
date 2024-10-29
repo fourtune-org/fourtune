@@ -3,9 +3,9 @@ export {
 } from "./generateFromTemplate.mjs"
 
 export {
-	default as generateSyncAsyncVariant
-} from "./generateSyncAsyncVariant.mjs"
+	default as generateAsyncSyncVariant
+} from "./generateAsyncSyncVariant.mjs"
 
 export {
-	default as generateSyncAsyncVariantFromString
-}from "./generateSyncAsyncVariantFromString.mjs"
+	default as generateAsyncSyncVariantFromString
+}from "./generateAsyncSyncVariantFromString.mjs"
