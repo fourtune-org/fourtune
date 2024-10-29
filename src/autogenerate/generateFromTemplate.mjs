@@ -11,7 +11,7 @@ export default function(source_path, items) {
 			const replace = items[search]
 
 			if (source.indexOf(search) === -1) {
-				fourtune_session.addWarning(
+				fourtune_session.emitWarning(
 					`generateFromTemplate.unused_template_key`, {
 						relative_path: source_path,
 						key: search
