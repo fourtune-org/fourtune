@@ -18,7 +18,9 @@
       "import": "./src/lib/base-realm/version.mjs",
       "types": "./src/lib/base-realm/version.d.mts"
     },
-    "./autogenerate": "./src/autogenerate/index.mjs",
+    "./autogenerate": {
+      "import": "./src/autogenerate/index.mjs"
+    },
     "./fs": {
       "import": "./src/fs/index.mjs",
       "types": "./src/fs/index.d.ts"
