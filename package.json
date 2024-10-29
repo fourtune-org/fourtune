@@ -25,7 +25,7 @@
     },
     "./fs": {
       "import": "./src/fs/index.mjs",
-      "types": "./src/fs/index.d.ts"
+      "types": "./src/fs/index.d.mts"
     }
   },
   "bin": {
