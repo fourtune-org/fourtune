@@ -9,7 +9,9 @@
     "url": "git+https://github.com/fourtune-org/fourtune.git"
   },
   "exports": {
-    ".": "./src/index.mjs",
+    ".": {
+      "import": "./src/main.mjs"
+    },
     "./base-realm": {
       "import": "./src/lib/base-realm/index.mjs",
       "types": "./src/lib/base-realm/index.d.mts"
