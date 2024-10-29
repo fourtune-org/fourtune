@@ -1,54 +1,88 @@
-import createPublicInterface from "./createPublicInterface.mjs"
-import loadFourtuneProjectConfiguration from "./loadFourtuneProjectConfiguration.mjs"
-import loadTargetIntegration from "./loadTargetIntegration.mjs"
-import initializeTarget from "./initializeTarget.mjs"
+import fs from "node:fs/promises"
+import {isDirectorySync} from "@anio-software/fs"
+import {ensureFourtuneInstalled} from "./ensureFourtuneInstalled.mjs"
+import {ensureFourtuneConfigExists} from "./ensureFourtuneConfigExists.mjs"
+import {loadFourtuneProjectConfig} from "./loadFourtuneProjectConfig.mjs"
+import {validateProjectConfig} from "./validateProjectConfig.mjs"
+import {normalizeConfig} from "./normalizeConfig.mjs"
+import {ensureFourtuneRealmInstalled} from "./ensureFourtuneRealmInstalled.mjs"
+import {loadRealm} from "./loadRealm.mjs"
+import {createPublicInterfaceObject} from "./createPublicInterfaceObject.mjs"
 
-export default async function(project_root) {
-	const project_config = await loadFourtuneProjectConfiguration(project_root)
+export async function createFourtuneSession(
+	project_root, /* cli options object */ {
 
-	// await validateFourtuneProjectConfiguration()
+	} = {}
+) {
+	if (!isDirectorySync(project_root)) {
+		throw new Error(
+			`The project root path "${project_root}" does not exist or is not a directory.`
+		)
+	}
 
-	const target_integration = await loadTargetIntegration(project_root, project_config)
+	//
+	// from here on use absolute path
+	//
+	const resolved_project_root = await fs.realpath(project_root)
 
-	let fourtune_session = {
+	// todo: maybe move implementation into separate folder
+	await ensureFourtuneInstalled(resolved_project_root)
+	await ensureFourtuneConfigExists(resolved_project_root)
+
+	let project_config = await loadFourtuneProjectConfig(
+		resolved_project_root
+	)
+
+	await validateProjectConfig(project_config)
+	project_config = await normalizeConfig(project_config)
+
+	await ensureFourtuneRealmInstalled(
+		resolved_project_root,
+		project_config.realm
+	)
+
+	const session = {
 		project: {
-			root: project_root,
-			config: project_config,
-			warnings: []
+			root: resolved_project_root,
+			config: project_config
 		},
 
-		source_files: [],
+		raw_input: {
+			source_files: null,
+			assets: null
+		},
+
+		input: {
+			source_files: null,
+			assets: null
+		},
+
+		// flag to freeze
+		// files_to_autogenerate,
+		// objects_to_generate, and
+		// products_to_generate, and
+		// hooks
+		is_frozen: false,
 
 		files_to_autogenerate: [],
 		objects_to_generate: [],
-		ephemerals: [],
-		distributables: [],
+		products_to_generate: [],
+		hooks: [],
 
-		target_integration,
-
-		target_hooks: [],
-		target_hooks_locked: false,
-
-		async runTargetHooks(id, args = []) {
-			const hooks = fourtune_session.target_hooks.filter(hook => {
-				return hook.id === id
-			})
-
-			for (const hook of hooks) {
-				await hook.fn(
-					fourtune_session.public_interface, ...args
-				)
-			}
-		},
-
-		public_interface: {},
-
-		async initializeTarget() {
-			return await initializeTarget(fourtune_session)
-		}
+		realm: await loadRealm(
+			resolved_project_root, project_config.realm
+		)
 	}
 
-	fourtune_session.public_interface = createPublicInterface(fourtune_session)
+	session.public_interface = createPublicInterfaceObject(
+		session
+	)
 
-	return fourtune_session
+	for (const entry in project_config.autogenerate) {
+		session.public_interface.autogenerate.addFile(
+			entry, project_config.autogenerate[entry]
+		)
+	}
+
+	return session
 }
