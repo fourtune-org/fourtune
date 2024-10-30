@@ -11,9 +11,21 @@ function checkFrozen(
 	}
 }
 
+import {
+	generateFromTemplate,
+	generateAsyncSyncVariant,
+	generateAsyncSyncVariantFromString
+} from "../../autogenerate/index.mjs"
+
 export function createPublicInterfaceObject(
 	fourtune_session
 ) {
+	const autogenerate_functions = {
+		generateFromTemplate,
+		generateAsyncSyncVariant,
+		generateAsyncSyncVariantFromString
+	}
+
 	return {
 		// can be used by user
 		user_data: {},
@@ -65,6 +77,7 @@ export function createPublicInterfaceObject(
 		},
 
 		autogenerate: {
+			...autogenerate_functions,
 			addFile(file_path, generator, generator_args = []) {
 				checkFrozen(fourtune_session, "autogenerate.addFile")
 
