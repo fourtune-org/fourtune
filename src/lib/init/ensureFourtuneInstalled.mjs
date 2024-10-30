@@ -8,10 +8,11 @@ export async function ensureFourtuneInstalled(project_root) {
 
 	try {
 		require.resolve("fourtune")
-	} catch {
+	} catch (error) {
 		throw new Error(
 			`Unable to locate "fourtune" in the project root.\n` +
-			`Make sure "fourtune" is installed in the project root.`
+			`Make sure "fourtune" is installed in the project root.\n` +
+			`Error: ${error.message}.`
 		)
 	}
 }
