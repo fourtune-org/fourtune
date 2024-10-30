@@ -7,9 +7,10 @@ export async function loadFourtuneProjectConfig(
 		return (await import(
 			path.join(project_root, "fourtune.config.mjs")
 		)).default
-	} catch {
+	} catch (error) {
 		throw new Error(
-			`Unable to import "fourtune.config.mjs" at the project root "${project_root}".`
+			`Unable to import "fourtune.config.mjs" at the project root "${project_root}".\n` +
+			`Error: ${error.message}.`
 		)
 	}
 }

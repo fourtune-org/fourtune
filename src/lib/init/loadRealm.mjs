@@ -14,9 +14,10 @@ export async function loadRealm(
 		return await import(
 			require.resolve(package_name)
 		)
-	} catch {
+	} catch (error) {
 		throw new Error(
-			`Unable to import "${package_name}".`
+			`Unable to import "${package_name}".\n` +
+			`Error: ${error.message}.`
 		)
 	}
 }
