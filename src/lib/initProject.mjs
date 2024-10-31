@@ -44,8 +44,6 @@ SOFTWARE.\n`
 `.DS_Store
 /node_modules/
 /.fourtune/
-/build/
-/objects/
 /dist/\n`,
 		overwrite: false
 	},
