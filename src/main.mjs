@@ -3,6 +3,7 @@ import {createFourtuneSession} from "./lib/init/createFourtuneSession.mjs"
 import {initialize} from "./lib/session/initialize.mjs"
 import {runHooks} from "./lib/session/runHooks.mjs"
 import writeProjectInitFile from "./lib/writeProjectInitFile.mjs"
+import {initProject} from "./lib/initProject.mjs"
 
 export async function fourtune(
 	project_root, {
@@ -24,6 +25,8 @@ export async function fourtune(
 			await runHooks(session, `${id}.post`)
 		}
 	} else {
+		await initProject(session.public_interface)
+
 		if ("initializeProject" in session.realm) {
 			await session.realm.initializeProject(
 				session.public_interface, async (name, contents, {overwrite = false} = {}) => {
