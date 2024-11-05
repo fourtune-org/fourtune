@@ -6,6 +6,7 @@ import {loadFourtuneProjectConfig} from "./loadFourtuneProjectConfig.mjs"
 import {validateProjectConfig} from "./validateProjectConfig.mjs"
 import {normalizeConfig} from "./normalizeConfig.mjs"
 import {ensureFourtuneRealmInstalled} from "./ensureFourtuneRealmInstalled.mjs"
+import {loadCore} from "./loadCore.mjs"
 import {loadRealm} from "./loadRealm.mjs"
 import {createPublicInterfaceObject} from "./createPublicInterfaceObject.mjs"
 
@@ -69,6 +70,7 @@ export async function createFourtuneSession(
 		products_to_generate: [],
 		hooks: [],
 
+		core: await loadCore(resolved_project_root),
 		realm: await loadRealm(
 			resolved_project_root, project_config.realm
 		)

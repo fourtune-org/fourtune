@@ -13,14 +13,6 @@
       "import": "./src/main.mjs",
       "require": "./src/main.mjs"
     },
-    "./base-realm": {
-      "import": "./src/lib/base-realm/index.mjs",
-      "types": "./src/lib/base-realm/index.d.mts"
-    },
-    "./base-realm/version": {
-      "import": "./src/lib/base-realm/version.mjs",
-      "types": "./src/lib/base-realm/version.d.mts"
-    },
     "./autogenerate": {
       "import": "./src/autogenerate/index.mjs"
     },
@@ -36,5 +28,8 @@
     "@anio-js-foundation/str-colorize": "^2.1.0",
     "@anio-node-foundation/cli-parse-args": "^3.0.0",
     "@anio-software/fs": "^0.6.0"
+  },
+  "peerDependencies": {
+    "@fourtune/core": "0.x"
   }
 }

@@ -1,5 +1,4 @@
 import path from "node:path"
-import base_realm from "../base-realm/index.mjs"
 
 function checkFrozen(
 	fourtune_session, op
@@ -50,12 +49,12 @@ export function createPublicInterfaceObject(
 			)
 		},
 
-		async getDependency(...args) {
-			const {getDependency} = await base_realm.loadRealmDependencies(
-				fourtune_session.project.root, `realm-${fourtune_session.project.config.realm}`
+		async getDependency(dependency_name) {
+			const {dependency} = await fourtune_session.core.default.loadRealmDependency(
+				fourtune_session.project.root, fourtune_session.project.config.realm, dependency_name
 			)
 
-			return getDependency(...args)
+			return dependency
 		},
 
 		hooks: {
