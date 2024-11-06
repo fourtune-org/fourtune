@@ -74,9 +74,11 @@ export async function createFourtuneSession(
 			resolved_project_root, "@fourtune/core"
 		),
 
-		realm: await loadProjectPackage(
-			resolved_project_root, `@fourtune/realm-${project_config.realm}/integration`
-		)
+		realm: {
+			integration: await loadProjectPackage(
+				resolved_project_root, `@fourtune/realm-${project_config.realm}/integration`
+			)
+		}
 	}
 
 	session.public_interface = createPublicInterfaceObject(

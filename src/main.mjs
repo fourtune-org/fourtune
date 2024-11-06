@@ -44,8 +44,10 @@ export async function fourtune(
 
 		await initProject(session.public_interface)
 
-		if ("initializeProject" in session.realm) {
-			await session.realm.initializeProject(
+		if ("initializeProject" in session.realm.integration) {
+			const {integration} = session.realm
+
+			await integration.initializeProject(
 				session.public_interface, async (name, contents, {overwrite = false} = {}) => {
 					return await writeProjectInitFile(
 						session.public_interface, {name, contents}, overwrite

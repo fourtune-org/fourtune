@@ -73,13 +73,11 @@ export async function initialize(
 		fourtune_session.project.config.target
 	]
 
-	if ("preInitialize" in fourtune_session.realm) {
-		const {preInitialize} = fourtune_session.realm
+	const {integration} = fourtune_session.realm
 
-		await preInitialize(...hook_args, assets, source_files)
+	if ("preInitialize" in integration) {
+		await integration.preInitialize(...hook_args, assets, source_files)
 	}
-
-	const {initialize} = fourtune_session.realm
 
 	//
 	// add synthetic auto files to "assets" and "source_files" array
@@ -100,7 +98,7 @@ export async function initialize(
 		...source_files
 	]
 
-	await initialize(
+	await integration.initialize(
 		...hook_args,
 		fourtune_session.input.assets,
 		fourtune_session.input.source_files
