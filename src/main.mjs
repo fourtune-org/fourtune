@@ -5,6 +5,9 @@ import {runHooks} from "./lib/session/runHooks.mjs"
 import writeProjectInitFile from "./lib/writeProjectInitFile.mjs"
 import {initProject} from "./lib/initProject.mjs"
 
+import removeObsoleteAutoFiles from "./stages/1.removeObsoleteAutoFiles.mjs"
+import createAutoFiles from "./stages/2.createAutoFiles.mjs"
+
 export async function fourtune(
 	project_root, {
 		initialize_project = false
@@ -26,6 +29,10 @@ export async function fourtune(
 		}
 	} else {
 		await initProject(session.public_interface)
+
+		// todo: should invoke hook?
+		await removeObsoleteAutoFiles.stage(session)
+		await createAutoFiles.stage(session)
 
 		if ("initializeProject" in session.realm.integration) {
 			const {integration} = session.realm
