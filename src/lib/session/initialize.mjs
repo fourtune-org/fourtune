@@ -53,7 +53,7 @@ function synthetic(
 }
 
 export async function initialize(
-	fourtune_session
+	fourtune_session, skip_target_initialization = false
 ) {
 	fourtune_session.raw_input.assets = await scandir(
 		path.join(fourtune_session.project.root, "assets"), {
@@ -76,7 +76,9 @@ export async function initialize(
 	if ("preInitialize" in fourtune_session.realm) {
 		const {preInitialize} = fourtune_session.realm
 
-		await preInitialize(...hook_args, assets, source_files)
+		if (!skip_target_initialization) {
+			await preInitialize(...hook_args, assets, source_files)
+		}
 	}
 
 	const {initialize} = fourtune_session.realm
@@ -100,11 +102,13 @@ export async function initialize(
 		...source_files
 	]
 
-	await initialize(
-		...hook_args,
-		fourtune_session.input.assets,
-		fourtune_session.input.source_files
-	)
+	if (!skip_target_initialization) {
+		await initialize(
+			...hook_args,
+			fourtune_session.input.assets,
+			fourtune_session.input.source_files
+		)
+	}
 
 	fourtune_session.is_frozen = true
 }
