@@ -1,5 +1,5 @@
-import path from "node:path"
 import {writeAtomicFile} from "@anio-software/fs"
+import {getObjectsPath} from "../getPath.mjs"
 
 export default {
 	id: "createObjectFiles",
@@ -13,11 +13,8 @@ export default {
 			)
 
 			await writeAtomicFile(
-				path.join(
+				getObjectsPath(
 					fourtune_session.project.root,
-					".fourtune",
-					"v0",
-					"objects",
 					entry.file_path
 				),
 				object,

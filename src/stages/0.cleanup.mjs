@@ -1,5 +1,6 @@
 import path from "node:path"
 import {remove} from "@anio-software/fs"
+import {getBuildPath, getObjectsPath} from "../getPath.mjs"
 
 export default {
 	id: "cleanup",
@@ -12,22 +13,7 @@ export default {
 			)
 		)
 
-		await remove(
-			path.join(
-				fourtune_session.project.root,
-				".fourtune",
-				"v0",
-				"objects"
-			)
-		)
-
-		await remove(
-			path.join(
-				fourtune_session.project.root,
-				".fourtune",
-				"v0",
-				"build"
-			)
-		)
+		await remove(getObjectsPath(fourtune_session.project.root))
+		await remove(getBuildPath(fourtune_session.project.root))
 	}
 }

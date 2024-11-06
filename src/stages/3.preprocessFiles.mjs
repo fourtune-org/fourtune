@@ -1,6 +1,7 @@
 import path from "node:path"
 import {mkdirp, writeAtomicFile} from "@anio-software/fs"
 import fs from "node:fs/promises"
+import {getBuildPath} from "../getPath.mjs"
 
 function canPreprocess(file_path) {
 	if (file_path.endsWith(".d.mts")) {
@@ -65,9 +66,7 @@ export default {
 	id: "preprocessFiles",
 
 	async stage(fourtune_session) {
-		const build_base = path.join(
-			fourtune_session.project.root, ".fourtune", "v0", "build"
-		)
+		const build_base = getBuildPath(fourtune_session.project.root)
 
 		await mkdirp(build_base)
 		await mkdirp(path.join(build_base, "src"))

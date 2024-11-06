@@ -1,4 +1,5 @@
 import path from "node:path"
+import {getBuildPath, getObjectsPath} from "../../getPath.mjs"
 
 function checkFrozen(
 	fourtune_session, op
@@ -130,6 +131,8 @@ export function createPublicInterfaceObject(
 
 				return product
 			}
-		}
+		},
+
+		paths: {getBuildPath, getObjectsPath}
 	}
 }
