@@ -1,14 +1,12 @@
 import path from "node:path"
 import {createRequire} from "node:module"
 
-export async function loadRealm(
-	project_root, realm
+export async function loadProjectPackage(
+	project_root, package_name
 ) {
 	const require = createRequire(
 		path.join(project_root, "index.js")
 	)
-
-	const package_name = `@fourtune/realm-${realm}/integration`
 
 	try {
 		return await import(
