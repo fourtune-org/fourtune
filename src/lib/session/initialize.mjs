@@ -1,5 +1,6 @@
 import path from "node:path"
 import {scandir} from "@anio-software/fs"
+import {ensureRealmDependenciesAreInstalled} from "./ensureRealmDependenciesAreInstalled.mjs"
 
 function files(source, entries) {
 	const files = entries.filter(({type}) => type === "file")
@@ -55,6 +56,8 @@ function synthetic(
 export async function initialize(
 	fourtune_session
 ) {
+	await ensureRealmDependenciesAreInstalled(fourtune_session)
+
 	fourtune_session.raw_input.assets = await scandir(
 		path.join(fourtune_session.project.root, "assets"), {
 			allow_missing_dir: true

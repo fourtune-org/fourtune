@@ -4,8 +4,6 @@ import {initialize} from "./lib/session/initialize.mjs"
 import {runHooks} from "./lib/session/runHooks.mjs"
 import writeProjectInitFile from "./lib/writeProjectInitFile.mjs"
 import {initProject} from "./lib/initProject.mjs"
-import {createRequire} from "node:module"
-import path from "node:path"
 
 export async function fourtune(
 	project_root, {
@@ -27,21 +25,6 @@ export async function fourtune(
 			await runHooks(session, `${id}.post`)
 		}
 	} else {
-		const require = createRequire(
-			path.join(session.project.root, "index.js")
-		)
-
-		const dependencies = require.resolve(`@fourtune/realm-${session.project.config.realm}/integration/dependencies`)
-		const {installRealmDependencies} = session.core
-
-		await installRealmDependencies(
-			session.project.root, session.project.config.realm, (
-				await import(dependencies)
-			).default, {
-				force: true
-			}
-		)
-
 		await initProject(session.public_interface)
 
 		if ("initializeProject" in session.realm.integration) {
