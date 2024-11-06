@@ -78,9 +78,9 @@ export async function createFourtuneSession(
 			integration: await loadProjectPackage(
 				resolved_project_root, `@fourtune/realm-${project_config.realm}/integration`
 			),
-			dependencies: await loadProjectPackage(
+			dependencies: (await loadProjectPackage(
 				resolved_project_root, `@fourtune/realm-${project_config.realm}/integration/dependencies`
-			)
+			)).default
 		}
 	}
 
