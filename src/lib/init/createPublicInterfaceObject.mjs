@@ -134,8 +134,13 @@ export function createPublicInterfaceObject(
 		},
 
 		paths: {
-			getBuildPath,
-			getObjectsPath
+			getBuildPath(...parts) {
+				return getBuildPath("", ...parts)
+			},
+
+			getObjectsPath(...parts) {
+				return getObjectsPath("", ...parts)
+			}
 		}
 	}
 }
