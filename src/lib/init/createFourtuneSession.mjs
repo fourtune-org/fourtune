@@ -1,11 +1,10 @@
 import fs from "node:fs/promises"
 import {isDirectorySync} from "@anio-software/fs"
-import {ensureFourtuneInstalled} from "./ensureFourtuneInstalled.mjs"
+import {ensurePackageIsInstalled} from "./ensurePackageIsInstalled.mjs"
 import {ensureFourtuneConfigExists} from "./ensureFourtuneConfigExists.mjs"
 import {loadFourtuneProjectConfig} from "./loadFourtuneProjectConfig.mjs"
 import {validateProjectConfig} from "./validateProjectConfig.mjs"
 import {normalizeConfig} from "./normalizeConfig.mjs"
-import {ensureFourtuneRealmInstalled} from "./ensureFourtuneRealmInstalled.mjs"
 import {loadCore} from "./loadCore.mjs"
 import {loadRealm} from "./loadRealm.mjs"
 import {createPublicInterfaceObject} from "./createPublicInterfaceObject.mjs"
@@ -27,7 +26,10 @@ export async function createFourtuneSession(
 	const resolved_project_root = await fs.realpath(project_root)
 
 	// todo: maybe move implementation into separate folder
-	await ensureFourtuneInstalled(resolved_project_root)
+
+	await ensurePackageIsInstalled(resolved_project_root, "fourtune")
+	await ensurePackageIsInstalled(resolved_project_root, "@fourtune/core")
+
 	await ensureFourtuneConfigExists(resolved_project_root)
 
 	let project_config = await loadFourtuneProjectConfig(
@@ -37,9 +39,8 @@ export async function createFourtuneSession(
 	await validateProjectConfig(project_config)
 	project_config = await normalizeConfig(project_config)
 
-	await ensureFourtuneRealmInstalled(
-		resolved_project_root,
-		project_config.realm
+	await ensurePackageIsInstalled(
+		resolved_project_root, `@fourtune/realm-${project_config.realm}`
 	)
 
 	const session = {

@@ -1,14 +1,12 @@
 import path from "node:path"
 import {createRequire} from "node:module"
 
-export async function ensureFourtuneRealmInstalled(
-	project_root, realm
+export async function ensurePackageIsInstalled(
+	project_root, package_name
 ) {
 	const require = createRequire(
 		path.join(project_root, "index.js")
 	)
-
-	const package_name = `@fourtune/realm-${realm}`
 
 	try {
 		require.resolve(package_name)
