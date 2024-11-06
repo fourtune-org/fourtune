@@ -138,8 +138,16 @@ export function createPublicInterfaceObject(
 				return getBuildPath("", ...parts)
 			},
 
+			getBuildPathFromProjectRoot(...parts) {
+				return getBuildPath(fourtune_session.project.root, ...parts)
+			},
+
 			getObjectsPath(...parts) {
 				return getObjectsPath("", ...parts)
+			},
+
+			getObjectsPathFromProjectRoot(...parts) {
+				return getObjectsPath(fourtune_session.project.root, ...parts)
 			}
 		}
 	}
