@@ -32,7 +32,7 @@ export async function fourtune(
 		)
 
 		const dependencies = require.resolve(`@fourtune/realm-${session.project.config.realm}/integration/dependencies`)
-		const {installRealmDependencies} = session.core.default
+		const {installRealmDependencies} = session.core
 
 		await installRealmDependencies(
 			session.project.root, session.project.config.realm, (

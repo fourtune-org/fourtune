@@ -70,9 +70,9 @@ export async function createFourtuneSession(
 		products_to_generate: [],
 		hooks: [],
 
-		core: await loadProjectPackage(
+		core: (await loadProjectPackage(
 			resolved_project_root, "@fourtune/core"
-		),
+		)).default,
 
 		realm: {
 			integration: await loadProjectPackage(
