@@ -14,7 +14,7 @@ export async function fourtune(
 ) {
 	const session = await createFourtuneSession(process.argv[2])
 
-	await initialize(session, initialize_project)
+	await initialize(session)
 
 	process.chdir(project_root)
 
