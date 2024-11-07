@@ -1,5 +1,6 @@
 import fs from "node:fs/promises"
-import {isDirectorySync} from "@anio-software/fs"
+import path from "node:path"
+import {isDirectorySync, isFileSync} from "@anio-software/fs"
 import {ensurePackageIsInstalled} from "./ensurePackageIsInstalled.mjs"
 import {ensureFourtuneConfigExists} from "./ensureFourtuneConfigExists.mjs"
 import {loadFourtuneProjectConfig} from "./loadFourtuneProjectConfig.mjs"
@@ -16,6 +17,10 @@ export async function createFourtuneSession(
 	if (!isDirectorySync(project_root)) {
 		throw new Error(
 			`The project root path "${project_root}" does not exist or is not a directory.`
+		)
+	} else if (!isFileSync(path.join(project_root, "package.json"))) {
+		throw new Error(
+			`The project root path "${project_root}" doesn't contain a package.json file.`
 		)
 	}
 
