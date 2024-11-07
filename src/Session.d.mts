@@ -23,11 +23,11 @@ export type FileGenerator = {
 }
 
 export type Distributable = ({
-	name: 'bundle',
+	name: string,
 	file_name: string,
 	generator: FourtuneFileGenerator
 }) | ({
-	name: 'bundle',
+	name: string,
 	file_name: string[],
 	generator: ReplaceReturnType<FourtuneFileGenerator, Promise<string[]>>
 })
