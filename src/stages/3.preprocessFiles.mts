@@ -1,5 +1,6 @@
 import path from "node:path"
 import {mkdirp, writeAtomicFile} from "@anio-software/fs"
+import type {ScandirEntry} from "@anio-software/fs"
 import fs from "node:fs/promises"
 import {getBuildPath} from "../getPath.mjs"
 import type {Session} from "#~src/Session.d.mts"
@@ -52,9 +53,9 @@ async function processFile(
 
 async function processInputFiles(
 	fourtune_session: Session,
-	build_base,
-	files,
-	dest
+	build_base: string,
+	files: ScandirEntry[],
+	dest: string
 ) {
 	for (const entry of files) {
 		if (entry.type !== "file") continue
