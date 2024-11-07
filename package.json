@@ -31,5 +31,8 @@
   },
   "peerDependencies": {
     "@fourtune/core": "0.x"
+  },
+  "devDependencies": {
+    "@fourtune/types": "^0.550.0"
   }
 }
