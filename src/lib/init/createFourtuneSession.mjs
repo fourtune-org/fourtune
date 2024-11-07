@@ -28,10 +28,19 @@ export async function createFourtuneSession(
 	// from here on use absolute path
 	//
 	const resolved_project_root = await fs.realpath(project_root)
+	const project_package_json = JSON.parse(
+		(
+			await fs.readFile(path.join(resolved_project_root, "package.json"))
+		)
+	)
 
-	// todo: maybe move implementation into separate folder
+	// don't check for the package "fourtune" when
+	// we are building fourtune itself
+	// otherwise this check will fail
+	if (project_package_json.name !== "fourtune") {
+		await ensurePackageIsInstalled(resolved_project_root, "fourtune")
+	}
 
-	await ensurePackageIsInstalled(resolved_project_root, "fourtune")
 	await ensurePackageIsInstalled(resolved_project_root, "@fourtune/core")
 
 	await ensureFourtuneConfigExists(resolved_project_root)
