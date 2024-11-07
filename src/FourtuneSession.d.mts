@@ -1,4 +1,5 @@
 import type {
+	FourtuneSession,
 	FourtuneConfig,
 	FourtuneFileGenerator,
 	FourtuneHookId,
@@ -73,5 +74,7 @@ export type Session = {
 	realm: {
 		integration: FourtuneRealmIntegration,
 		dependencies: DependenciesToInstall
-	}
+	},
+
+	public_interface: FourtuneSession
 }
