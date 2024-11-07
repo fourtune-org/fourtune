@@ -1,3 +1,5 @@
+import type {ScandirEntry} from "@anio-software/fs"
+
 import type {
 	FourtuneSession,
 	FourtuneConfig,
@@ -47,8 +49,8 @@ export type Session = {
 	},
 
 	raw_input: {
-		source_files: any,
-		assets: any
+		source_files: ScandirEntry[],
+		assets: ScandirEntry[]
 	},
 
 	input: {
