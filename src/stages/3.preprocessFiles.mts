@@ -2,8 +2,9 @@ import path from "node:path"
 import {mkdirp, writeAtomicFile} from "@anio-software/fs"
 import fs from "node:fs/promises"
 import {getBuildPath} from "../getPath.mjs"
+import type {Session} from "#~src/Session.d.mts"
 
-function canPreprocess(file_path) {
+function canPreprocess(file_path: string) {
 	if (file_path.endsWith(".d.mts")) {
 		return true
 	} else if (file_path.endsWith(".mts")) {
@@ -29,8 +30,12 @@ function canPreprocess(file_path) {
 	return false
 }
 
-async function processFile(fourtune_session, src, dest) {
-	let source = await fs.readFile(src)
+async function processFile(
+	fourtune_session: Session,
+	src: string,
+	dest: string
+) {
+	let source : Buffer|string = await fs.readFile(src)
 
 	if (canPreprocess(src)) {
 		source = source.toString()
@@ -46,7 +51,7 @@ async function processFile(fourtune_session, src, dest) {
 }
 
 async function processInputFiles(
-	fourtune_session,
+	fourtune_session: Session,
 	build_base,
 	files,
 	dest
@@ -65,7 +70,7 @@ async function processInputFiles(
 export default {
 	id: "preprocessFiles",
 
-	async stage(fourtune_session) {
+	async stage(fourtune_session: Session) {
 		const build_base = getBuildPath(fourtune_session.project.root)
 
 		await mkdirp(build_base)

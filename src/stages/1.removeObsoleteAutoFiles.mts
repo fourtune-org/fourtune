@@ -1,10 +1,12 @@
 import path from "node:path"
 import {scandir, remove} from "@anio-software/fs"
 
+import type {Session} from "#~src/Session.d.mts"
+
 export default {
 	id: "removeObsoleteAutoFiles",
 
-	async stage(fourtune_session) {
+	async stage(fourtune_session: Session) {
 
 		const auto_files_entries = await scandir(
 			path.join(
