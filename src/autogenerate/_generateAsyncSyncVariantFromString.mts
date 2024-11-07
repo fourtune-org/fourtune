@@ -1,4 +1,4 @@
-export default function(source, variant = "async") {
+export default function(source: string, variant = "async") {
 	const lines = source.toString().split("\n")
 
 	let output = []

@@ -1,8 +1,15 @@
 import path from "node:path"
 import fs from "node:fs/promises"
+import type {
+	FourtuneSession,
+	FourtuneAutogenerateGenerateFromTemplate as Impl
+} from "@fourtune/types/fourtune/v0/"
 
-export default function(source_path, items) {
-	return async function(fourtune_session) {
+const impl : Impl = function(
+	source_path: string,
+	items: {[search: string]: string}
+) {
+	return async function(fourtune_session: FourtuneSession) {
 		let source = (await fs.readFile(
 			path.join(fourtune_session.getProjectRoot(), source_path)
 		)).toString()
@@ -11,8 +18,9 @@ export default function(source_path, items) {
 			const replace = items[search]
 
 			if (source.indexOf(search) === -1) {
+				// todo: use correct warning
 				fourtune_session.emitWarning(
-					`generateFromTemplate.unused_template_key`, {
+					`generateFromTemplate.unused_template_key`, ``, {
 						relative_path: source_path,
 						key: search
 					}
@@ -25,3 +33,5 @@ export default function(source_path, items) {
 		return source
 	}
 }
+
+export default impl
