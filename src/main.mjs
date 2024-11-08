@@ -30,10 +30,6 @@ export async function fourtune(
 	} else {
 		await initProject(session.public_interface)
 
-		// todo: should invoke hook?
-		await removeObsoleteAutoFiles.stage(session)
-		await createAutoFiles.stage(session)
-
 		if ("initializeProject" in session.realm.integration) {
 			const {integration} = session.realm
 
@@ -45,5 +41,9 @@ export async function fourtune(
 				}
 			)
 		}
+
+		// todo: should invoke hook?
+		await removeObsoleteAutoFiles.stage(session)
+		await createAutoFiles.stage(session)
 	}
 }
