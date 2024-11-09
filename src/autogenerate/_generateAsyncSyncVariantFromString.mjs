@@ -13,9 +13,9 @@ export default function(source, variant = "async") {
 			continue
 		}
 
-		if (!line.startsWith("//") && next_line.startsWith("//")) {
+		if (!line.startsWith("//") && next_line.startsWith("//>")) {
 			output.push(
-				variant === "sync" ? next_line.slice(2) : line
+				variant === "sync" ? next_line.slice(3) : line
 			)
 			++i
 
