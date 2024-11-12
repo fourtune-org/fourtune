@@ -41,7 +41,7 @@ export async function createFourtuneSession(
 		await ensurePackageIsInstalled(resolved_project_root, "fourtune")
 	}
 
-	await ensurePackageIsInstalled(resolved_project_root, "@fourtune/core")
+	await ensurePackageIsInstalled(resolved_project_root, "@fourtune/core/v1")
 
 	await ensureFourtuneConfigExists(resolved_project_root)
 
@@ -85,7 +85,7 @@ export async function createFourtuneSession(
 		hooks: [],
 
 		core: (await loadProjectPackage(
-			resolved_project_root, "@fourtune/core"
+			resolved_project_root, "@fourtune/core/v1"
 		)).default,
 
 		realm: {
