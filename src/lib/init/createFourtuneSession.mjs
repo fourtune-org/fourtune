@@ -106,7 +106,7 @@ export async function createFourtuneSession(
 	)
 
 	for (const entry in project_config.autogenerate) {
-		session.public_interface.autogenerate.addFile(
+		session.public_interface.autogenerate.addUserFile(
 			entry, project_config.autogenerate[entry]
 		)
 	}

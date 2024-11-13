@@ -78,11 +78,21 @@ export function createPublicInterfaceObject(
 
 		autogenerate: {
 			...autogenerate_functions,
-			addFile(file_path, generator, generator_args = []) {
-				checkFrozen(fourtune_session, "autogenerate.addFile")
+			addFourtuneFile(file_path, generator, generator_args = []) {
+				checkFrozen(fourtune_session, "autogenerate.addFourtuneFile")
 
 				fourtune_session.files_to_autogenerate.push({
-					file_path: path.normalize(file_path),
+					file_path: path.join("fourtune", path.normalize(file_path)),
+					generator,
+					generator_args
+				})
+			},
+
+			addUserFile(file_path, generator, generator_args = []) {
+				checkFrozen(fourtune_session, "autogenerate.addUserFile")
+
+				fourtune_session.files_to_autogenerate.push({
+					file_path: path.join("user", path.normalize(file_path)),
 					generator,
 					generator_args
 				})

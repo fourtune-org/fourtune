@@ -96,7 +96,11 @@ export async function initialize(
 	fourtune_session.input.source_files = [
 		...synthetic(
 			fourtune_session.files_to_autogenerate,
-			"src/"
+			"fourtune/src"
+		),
+		...synthetic(
+			fourtune_session.files_to_autogenerate,
+			"user/src"
 		),
 		...source_files
 	]
