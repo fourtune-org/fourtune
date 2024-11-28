@@ -64,8 +64,6 @@ export function createPublicInterfaceObject(
 			}
 		},
 
-		realm: fourtune_session.realm.integration.getPublicRealmObject(),
-
 		autogenerate: {
 			addFourtuneFile(file_path, generator, generator_args = []) {
 				checkFrozen(fourtune_session, "autogenerate.addFourtuneFile")
