@@ -76,6 +76,8 @@ export function createPublicInterfaceObject(
 			}
 		},
 
+		realm: fourtune_session.realm.integration.getPublicRealmObject(),
+
 		autogenerate: {
 			...autogenerate_functions,
 			addFourtuneFile(file_path, generator, generator_args = []) {
