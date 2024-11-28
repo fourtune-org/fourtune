@@ -11,21 +11,9 @@ function checkFrozen(
 	}
 }
 
-import {
-	generateFromTemplate,
-	generateAsyncSyncVariant,
-	generateAsyncSyncVariantFromString
-} from "../../autogenerate/index.mjs"
-
 export function createPublicInterfaceObject(
 	fourtune_session
 ) {
-	const autogenerate_functions = {
-		generateFromTemplate,
-		generateAsyncSyncVariant,
-		generateAsyncSyncVariantFromString
-	}
-
 	return {
 		// can be used by user
 		user_data: {},
@@ -79,7 +67,6 @@ export function createPublicInterfaceObject(
 		realm: fourtune_session.realm.integration.getPublicRealmObject(),
 
 		autogenerate: {
-			...autogenerate_functions,
 			addFourtuneFile(file_path, generator, generator_args = []) {
 				checkFrozen(fourtune_session, "autogenerate.addFourtuneFile")
 
