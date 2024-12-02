@@ -38,12 +38,14 @@ export function createPublicInterfaceObject(
 			)
 		},
 
-		async getDependency(dependency_name) {
-			const {dependency} = await fourtune_session.core.api.loadRealmDependency(
-				fourtune_session.project.root, fourtune_session.project.config.realm, dependency_name
-			)
+		getDependency(dependency_name) {
+			const map = fourtune_session.realm.loaded_dependencies
 
-			return dependency
+			if (!map.has(dependency_name)) {
+				throw new Error(`No such dependency '${dependency_name}'.`)
+			}
+
+			return map.get(dependency_name)
 		},
 
 		hooks: {

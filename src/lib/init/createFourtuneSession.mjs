@@ -99,7 +99,9 @@ export async function createFourtuneSession(
 			dependencies: (await loadProjectPackage(
 				resolved_project_root,
 				`@fourtune/realm-${project_config.realm}/integration/dependencies`
-			)).default
+			)).default,
+
+			loaded_dependencies: new Map()
 		}
 	}
 
