@@ -1,7 +1,7 @@
 export async function ensureRealmDependenciesAreInstalled(
 	fourtune_session
 ) {
-	const {installRealmDependencies} = fourtune_session.core
+	const {installRealmDependencies} = fourtune_session.core.api
 
 	await installRealmDependencies(
 		fourtune_session.project.root,

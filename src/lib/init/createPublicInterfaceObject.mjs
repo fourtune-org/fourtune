@@ -39,7 +39,7 @@ export function createPublicInterfaceObject(
 		},
 
 		async getDependency(dependency_name) {
-			const {dependency} = await fourtune_session.core.loadRealmDependency(
+			const {dependency} = await fourtune_session.core.api.loadRealmDependency(
 				fourtune_session.project.root, fourtune_session.project.config.realm, dependency_name
 			)
 
