@@ -45,7 +45,7 @@ export function createPublicInterfaceObject(
 				throw new Error(`No such dependency '${dependency_name}'.`)
 			}
 
-			return map.get(dependency_name)
+			return map.get(dependency_name).dependency
 		},
 
 		hooks: {
