@@ -53,7 +53,7 @@ export async function createFourtuneSession(
 	project_config = await normalizeConfig(project_config)
 
 	await ensurePackageIsInstalled(
-		resolved_project_root, `@fourtune/realm-${project_config.realm}`
+		resolved_project_root, `@fourtune/realm-${project_config.realm.name}`
 	)
 
 	const session = {
@@ -93,12 +93,12 @@ export async function createFourtuneSession(
 		realm: {
 			integration: await loadProjectPackage(
 				resolved_project_root,
-				`@fourtune/realm-${project_config.realm}/integration`
+				`@fourtune/realm-${project_config.realm.name}/integration`
 			),
 
 			dependencies: (await loadProjectPackage(
 				resolved_project_root,
-				`@fourtune/realm-${project_config.realm}/integration/dependencies`
+				`@fourtune/realm-${project_config.realm.name}/integration/dependencies`
 			)).default,
 
 			loaded_dependencies: new Map()

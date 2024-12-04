@@ -5,7 +5,7 @@ export async function ensureRealmDependenciesAreInstalled(
 
 	await installRealmDependencies(
 		fourtune_session.project.root,
-		fourtune_session.project.config.realm,
+		fourtune_session.project.config.realm.name,
 		fourtune_session.realm.dependencies
 	)
 
@@ -13,7 +13,7 @@ export async function ensureRealmDependenciesAreInstalled(
 		fourtune_session.realm.loaded_dependencies.set(
 			dependency_name, await loadRealmDependency(
 				fourtune_session.project.root,
-				fourtune_session.project.config.realm,
+				fourtune_session.project.config.realm.name,
 				dependency_name
 			)
 		)

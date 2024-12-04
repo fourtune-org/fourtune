@@ -5,9 +5,15 @@ export async function validateProjectConfig(config) {
 		)
 	}
 
-	if (!(["js"].includes(config.realm))) {
+	if (!("name" in config.realm)) {
 		throw new Error(
-			`Unknown realm "${config.realm}".`
+			`Mandatory field "realm.name" is missing in config.`
+		)
+	}
+
+	if (!(["js"].includes(config.realm.name))) {
+		throw new Error(
+			`Unknown realm "${config.realm.name}".`
 		)
 	}
 }
