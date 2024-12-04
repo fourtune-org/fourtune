@@ -27,8 +27,8 @@ export function createPublicInterfaceObject(
 		},
 
 		getRealmOptions() {
-			if ("options" in fourtune_session.project.realm) {
-				return fourtune_session.project.realm.options
+			if ("options" in fourtune_session.project.config.realm) {
+				return fourtune_session.project.config.realm.options
 			}
 
 			return {}
