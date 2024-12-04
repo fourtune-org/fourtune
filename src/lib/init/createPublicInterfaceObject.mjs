@@ -26,6 +26,14 @@ export function createPublicInterfaceObject(
 			return fourtune_session.project.config
 		},
 
+		getRealmOptions() {
+			if ("options" in fourtune_session.project.realm) {
+				return fourtune_session.project.realm.options
+			}
+
+			return {}
+		},
+
 		emitWarning(id, meta) {
 			process.stderr.write(
 				`[warning] ${id} ${JSON.stringify(meta)}\n`
