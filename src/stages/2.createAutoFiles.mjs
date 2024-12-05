@@ -5,7 +5,13 @@ export default {
 	id: "createAutoFiles",
 
 	async stage(fourtune_session) {
-		for (const entry of fourtune_session.files_to_autogenerate) {
+		const auto_files = [
+			...getAutoFilesOfType("fourtune"),
+			...getAutoFilesOfType("synthetic"),
+			...getAutoFilesOfType("user")
+		]
+
+		for (const entry of auto_files) {
 			const source = await entry.generator(
 				fourtune_session.public_interface,
 				entry.file_path,
@@ -20,6 +26,12 @@ export default {
 				source,
 				{create_parents: true}
 			)
+		}
+
+		function getAutoFilesOfType(type) {
+			return fourtune_session.files_to_autogenerate.filter(e => {
+				return e.type === type
+			})
 		}
 	}
 }
