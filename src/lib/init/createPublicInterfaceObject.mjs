@@ -81,6 +81,7 @@ export function createPublicInterfaceObject(
 				checkFrozen(fourtune_session, "autogenerate.addFourtuneFile")
 
 				fourtune_session.files_to_autogenerate.push({
+					type: "fourtune",
 					file_path: path.join("fourtune", path.normalize(file_path)),
 					generator,
 					generator_args
@@ -96,6 +97,7 @@ export function createPublicInterfaceObject(
 				checkFrozen(fourtune_session, "autogenerate.addSyntheticFile")
 
 				fourtune_session.files_to_autogenerate.push({
+					type: "synthetic",
 					file_path: path.join("synthetic", path.normalize(file_path)),
 					generator,
 					generator_args
@@ -106,6 +108,7 @@ export function createPublicInterfaceObject(
 				checkFrozen(fourtune_session, "autogenerate.addUserFile")
 
 				fourtune_session.files_to_autogenerate.push({
+					type: "user",
 					file_path: path.join("user", path.normalize(file_path)),
 					generator,
 					generator_args
