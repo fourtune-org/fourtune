@@ -100,6 +100,10 @@ export async function initialize(
 		),
 		...synthetic(
 			fourtune_session.files_to_autogenerate,
+			"synthetic/src"
+		),
+		...synthetic(
+			fourtune_session.files_to_autogenerate,
 			"user/src"
 		),
 		...source_files
