@@ -106,17 +106,6 @@ export function createPublicInterfaceObject(
 					generator,
 					generator_args
 				})
-			},
-
-			addUserFile(file_path, generator, generator_args = []) {
-				checkFrozen(fourtune_session, "autogenerate.addUserFile")
-
-				fourtune_session.files_to_autogenerate.push({
-					type: "user",
-					file_path: path.join("user", path.normalize(file_path)),
-					generator,
-					generator_args
-				})
 			}
 		},
 
