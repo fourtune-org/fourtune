@@ -7,8 +7,8 @@ export default {
 	async stage(fourtune_session) {
 		const auto_files = [
 			...getAutoFilesOfType("fourtune"),
-			...getAutoFilesOfType("synthetic"),
-			...getAutoFilesOfType("user")
+			...getAutoFilesOfType("synthetic:async.sync"),
+			...getAutoFilesOfType("synthetic:user")
 		]
 
 		for (const entry of auto_files) {
