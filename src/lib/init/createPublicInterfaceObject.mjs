@@ -107,7 +107,11 @@ export function createPublicInterfaceObject(
 
 				fourtune_session.files_to_autogenerate.push({
 					type: `synthetic:${category}`,
-					file_path: path.join("synthetic", path.normalize(file_path)),
+					file_path: path.join(
+						"synthetic",
+						category,
+						path.normalize(file_path)
+					),
 					generator,
 					generator_args
 				})
