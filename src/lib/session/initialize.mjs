@@ -56,6 +56,8 @@ function synthetic(
 export async function initialize(
 	fourtune_session
 ) {
+	console.log("Please wait while Fourtune is installing the dependencies needed for the project")
+
 	await ensureRealmDependenciesAreInstalled(fourtune_session)
 
 	fourtune_session.raw_input.assets = await scandir(
