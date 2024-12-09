@@ -1,5 +1,5 @@
 import {writeAtomicFile} from "@anio-software/fs"
-import {getObjectsPath} from "../getPath.mjs"
+import {getObjectsPath} from "../getPath.mts"
 
 export default {
 	id: "createObjectFiles",

@@ -1,9 +1,9 @@
-import cleanup from "./0.cleanup.mjs"
-import removeObsoleteAutoFiles from "./1.removeObsoleteAutoFiles.mjs"
-import createAutoFiles from "./2.createAutoFiles.mjs"
-import preprocessFiles from "./3.preprocessFiles.mjs"
-import createObjectFiles from "./4.createObjectFiles.mjs"
-import createProducts from "./5.createProducts.mjs"
+import cleanup from "./0.cleanup.mts"
+import removeObsoleteAutoFiles from "./1.removeObsoleteAutoFiles.mts"
+import createAutoFiles from "./2.createAutoFiles.mts"
+import preprocessFiles from "./3.preprocessFiles.mts"
+import createObjectFiles from "./4.createObjectFiles.mts"
+import createProducts from "./5.createProducts.mts"
 
 export const stages = [
 	cleanup,

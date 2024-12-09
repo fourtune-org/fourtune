@@ -1,13 +1,13 @@
 import fs from "node:fs/promises"
 import path from "node:path"
 import {isDirectorySync, isFileSync} from "@anio-software/fs"
-import {ensurePackageIsInstalled} from "./ensurePackageIsInstalled.mjs"
-import {ensureFourtuneConfigExists} from "./ensureFourtuneConfigExists.mjs"
-import {loadFourtuneProjectConfig} from "./loadFourtuneProjectConfig.mjs"
-import {validateProjectConfig} from "./validateProjectConfig.mjs"
-import {normalizeConfig} from "./normalizeConfig.mjs"
-import {loadProjectPackage} from "./loadProjectPackage.mjs"
-import {createPublicInterfaceObject} from "./createPublicInterfaceObject.mjs"
+import {ensurePackageIsInstalled} from "./ensurePackageIsInstalled.mts"
+import {ensureFourtuneConfigExists} from "./ensureFourtuneConfigExists.mts"
+import {loadFourtuneProjectConfig} from "./loadFourtuneProjectConfig.mts"
+import {validateProjectConfig} from "./validateProjectConfig.mts"
+import {normalizeConfig} from "./normalizeConfig.mts"
+import {loadProjectPackage} from "./loadProjectPackage.mts"
+import {createPublicInterfaceObject} from "./createPublicInterfaceObject.mts"
 
 export async function createFourtuneSession(
 	project_root, /* cli options object */ {

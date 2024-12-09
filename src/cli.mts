@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import {fourtune} from "./main.mjs"
+import {fourtune} from "./main.mts"
 
 const project_root = process.argv[2]
 

@@ -1,7 +1,7 @@
 import path from "node:path"
 import {mkdirp, writeAtomicFile} from "@anio-software/fs"
 import fs from "node:fs/promises"
-import {getBuildPath} from "../getPath.mjs"
+import {getBuildPath} from "../getPath.mts"
 
 function canPreprocess(file_path) {
 	if (file_path.endsWith(".d.mts")) {

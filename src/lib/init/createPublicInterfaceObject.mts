@@ -1,5 +1,5 @@
 import path from "node:path"
-import {getBuildPath, getObjectsPath} from "../../getPath.mjs"
+import {getBuildPath, getObjectsPath} from "../../getPath.mts"
 
 function checkFrozen(
 	fourtune_session, op

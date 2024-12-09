@@ -1,6 +1,6 @@
 import path from "node:path"
 import {remove} from "@anio-software/fs"
-import {getBuildPath, getObjectsPath} from "../getPath.mjs"
+import {getBuildPath, getObjectsPath} from "../getPath.mts"
 
 export default {
 	id: "cleanup",

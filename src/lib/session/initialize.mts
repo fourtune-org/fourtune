@@ -1,6 +1,6 @@
 import path from "node:path"
 import {scandir} from "@anio-software/fs"
-import {ensureRealmDependenciesAreInstalled} from "./ensureRealmDependenciesAreInstalled.mjs"
+import {ensureRealmDependenciesAreInstalled} from "./ensureRealmDependenciesAreInstalled.mts"
 
 function files(source, entries) {
 	const files = entries.filter(({type}) => type === "file")

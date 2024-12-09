@@ -1,12 +1,12 @@
-import {stages} from "./stages/_index.mjs"
-import {createFourtuneSession} from "./lib/init/createFourtuneSession.mjs"
-import {initialize} from "./lib/session/initialize.mjs"
-import {runHooks} from "./lib/session/runHooks.mjs"
-import writeProjectInitFile from "./lib/writeProjectInitFile.mjs"
-import {initProject} from "./lib/initProject.mjs"
+import {stages} from "./stages/_index.mts"
+import {createFourtuneSession} from "./lib/init/createFourtuneSession.mts"
+import {initialize} from "./lib/session/initialize.mts"
+import {runHooks} from "./lib/session/runHooks.mts"
+import writeProjectInitFile from "./lib/writeProjectInitFile.mts"
+import {initProject} from "./lib/initProject.mts"
 
-import removeObsoleteAutoFiles from "./stages/1.removeObsoleteAutoFiles.mjs"
-import createAutoFiles from "./stages/2.createAutoFiles.mjs"
+import removeObsoleteAutoFiles from "./stages/1.removeObsoleteAutoFiles.mts"
+import createAutoFiles from "./stages/2.createAutoFiles.mts"
 
 export async function fourtune(
 	project_root, {
