@@ -22,6 +22,7 @@
     "@aniojs/node-fs": "^0.2.0",
     "@fourtune/core": "^0.1101.0",
     "@fourtune/realm-js": "^0.31000.4",
+    "@fourtune/types": "^0.90000.0",
     "fourtune": "^0.30000.0"
   },
   "dependencies": {
