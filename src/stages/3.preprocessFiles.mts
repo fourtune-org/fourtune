@@ -2,6 +2,7 @@ import path from "node:path"
 import {mkdirp, writeAtomicFile} from "@aniojs/node-fs"
 import fs from "node:fs/promises"
 import {getBuildPath} from "../getPath.mts"
+import type {Session} from "#~src/Session.d.mts"
 
 function canPreprocess(file_path) {
 	if (file_path.endsWith(".d.mts")) {
@@ -65,7 +66,7 @@ async function processInputFiles(
 export default {
 	id: "preprocessFiles",
 
-	async stage(fourtune_session) {
+	async stage(fourtune_session: Session) {
 		const build_base = getBuildPath(fourtune_session.project.root)
 
 		await mkdirp(build_base)

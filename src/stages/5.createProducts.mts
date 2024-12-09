@@ -1,10 +1,11 @@
 import path from "node:path"
 import {writeAtomicFile} from "@aniojs/node-fs"
+import type {Session} from "#~src/Session.d.mts"
 
 export default {
 	id: "createProducts",
 
-	async stage(fourtune_session) {
+	async stage(fourtune_session: Session) {
 		for (const {product_name, distributables} of fourtune_session.products_to_generate) {
 			console.log("> " + product_name)
 

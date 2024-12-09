@@ -1,10 +1,11 @@
 import {writeAtomicFile} from "@aniojs/node-fs"
 import {getObjectsPath} from "../getPath.mts"
+import type {Session} from "#~src/Session.d.mts"
 
 export default {
 	id: "createObjectFiles",
 
-	async stage(fourtune_session) {
+	async stage(fourtune_session: Session) {
 		for (const entry of fourtune_session.objects_to_generate) {
 			const object = await entry.generator(
 				fourtune_session.public_interface,

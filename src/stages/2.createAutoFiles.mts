@@ -1,10 +1,11 @@
 import path from "node:path"
 import {writeAtomicFile} from "@aniojs/node-fs"
+import type {Session} from "#~src/Session.d.mts"
 
 export default {
 	id: "createAutoFiles",
 
-	async stage(fourtune_session) {
+	async stage(fourtune_session: Session) {
 		const auto_files = [
 			...getAutoFilesOfType("fourtune"),
 			...getAutoFilesOfType("synthetic:async.sync"),
