@@ -10,7 +10,7 @@ import {loadProjectPackage} from "./loadProjectPackage.mts"
 import {createPublicInterfaceObject} from "./createPublicInterfaceObject.mts"
 
 export async function createFourtuneSession(
-	project_root, /* cli options object */ {
+	project_root: string, /* cli options object */ {
 
 	} = {}
 ) {
