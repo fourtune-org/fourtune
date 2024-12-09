@@ -16,7 +16,7 @@ export default {
 		)
 
 		const obsolete_auto_files = auto_files_entries.filter(({type, relative_path}) => {
-			if (type !== "file") return false
+			if (type !== "regularFile") return false
 
 			for (const {file_path} of fourtune_session.files_to_autogenerate) {
 				if (file_path === relative_path) return false
@@ -26,7 +26,7 @@ export default {
 		})
 
 		const obsolete_auto_dirs = auto_files_entries.filter(({type, relative_path}) => {
-			if (type !== "dir") return false
+			if (type !== "regularDir") return false
 
 			for (const {file_path} of fourtune_session.files_to_autogenerate) {
 				if (file_path.startsWith(`${relative_path}/`)) {
