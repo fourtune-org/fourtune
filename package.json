@@ -19,7 +19,7 @@
     "url": "git+https://github.com/fourtune-org/fourtune.git"
   },
   "devDependencies": {
-    "@aniojs/node-fs": "^0.1.0",
+    "@aniojs/node-fs": "^0.2.0",
     "@fourtune/core": "^0.1101.0",
     "@fourtune/realm-js": "^0.31000.4",
     "fourtune": "^0.30000.0"
