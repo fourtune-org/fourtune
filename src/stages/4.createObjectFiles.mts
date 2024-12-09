@@ -1,4 +1,4 @@
-import {writeAtomicFile} from "@anio-software/fs"
+import {writeAtomicFile} from "@aniojs/node-fs"
 import {getObjectsPath} from "../getPath.mts"
 
 export default {

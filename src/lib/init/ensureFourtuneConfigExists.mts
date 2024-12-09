@@ -1,5 +1,5 @@
 import path from "node:path"
-import {isFileSync} from "@anio-software/fs"
+import {isFileSync} from "@aniojs/node-fs"
 
 export async function ensureFourtuneConfigExists(project_root) {
 	if (!isFileSync(path.join(project_root, "fourtune.config.mjs"))) {

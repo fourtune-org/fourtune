@@ -1,6 +1,6 @@
 import fs from "node:fs/promises"
 import path from "node:path"
-import {isDirectorySync, isFileSync} from "@anio-software/fs"
+import {isDirectorySync, isFileSync} from "@aniojs/node-fs"
 import {ensurePackageIsInstalled} from "./ensurePackageIsInstalled.mts"
 import {ensureFourtuneConfigExists} from "./ensureFourtuneConfigExists.mts"
 import {loadFourtuneProjectConfig} from "./loadFourtuneProjectConfig.mts"

@@ -1,5 +1,5 @@
 import path from "node:path"
-import {writeAtomicFile} from "@anio-software/fs"
+import {writeAtomicFile} from "@aniojs/node-fs"
 
 export default {
 	id: "createProducts",

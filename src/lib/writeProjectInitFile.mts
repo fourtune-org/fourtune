@@ -1,7 +1,7 @@
 import {
 	writeAtomicFile,
 	isFileSync
-} from "@anio-software/fs"
+} from "@aniojs/node-fs"
 import path from "node:path"
 
 export default async function(

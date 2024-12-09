@@ -1,5 +1,5 @@
 import path from "node:path"
-import {mkdirp, writeAtomicFile} from "@anio-software/fs"
+import {mkdirp, writeAtomicFile} from "@aniojs/node-fs"
 import fs from "node:fs/promises"
 import {getBuildPath} from "../getPath.mts"
 

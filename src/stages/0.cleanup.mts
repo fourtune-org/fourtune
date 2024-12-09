@@ -1,5 +1,5 @@
 import path from "node:path"
-import {remove} from "@anio-software/fs"
+import {remove} from "@aniojs/node-fs"
 import {getBuildPath, getObjectsPath} from "../getPath.mts"
 
 export default {

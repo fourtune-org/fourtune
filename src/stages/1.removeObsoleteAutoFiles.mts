@@ -1,5 +1,5 @@
 import path from "node:path"
-import {scandir, remove} from "@anio-software/fs"
+import {scandir, remove} from "@aniojs/node-fs"
 
 export default {
 	id: "removeObsoleteAutoFiles",

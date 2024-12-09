@@ -1,5 +1,5 @@
 import path from "node:path"
-import {scandir} from "@anio-software/fs"
+import {scandir} from "@aniojs/node-fs"
 import {ensureRealmDependenciesAreInstalled} from "./ensureRealmDependenciesAreInstalled.mts"
 
 function files(source, entries) {
