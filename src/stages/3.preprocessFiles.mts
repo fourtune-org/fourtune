@@ -4,7 +4,7 @@ import fs from "node:fs/promises"
 import {getBuildPath} from "../getPath.mts"
 import type {Session} from "#~src/Session.d.mts"
 
-function canPreprocess(file_path) {
+function canPreprocess(file_path: string) {
 	if (file_path.endsWith(".d.mts")) {
 		return true
 	} else if (file_path.endsWith(".mts")) {
@@ -30,7 +30,7 @@ function canPreprocess(file_path) {
 	return false
 }
 
-async function processFile(fourtune_session, src, dest) {
+async function processFile(fourtune_session: Session, src: string, dest: string) {
 	let source = await fs.readFile(src)
 
 	if (canPreprocess(src)) {
@@ -47,7 +47,7 @@ async function processFile(fourtune_session, src, dest) {
 }
 
 async function processInputFiles(
-	fourtune_session,
+	fourtune_session: Session,
 	build_base,
 	files,
 	dest
