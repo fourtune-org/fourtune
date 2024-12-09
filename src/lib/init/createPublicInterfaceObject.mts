@@ -1,8 +1,9 @@
 import path from "node:path"
 import {getBuildPath, getObjectsPath} from "../../getPath.mts"
+import type {Session} from "#~src/Session.d.mts"
 
 function checkFrozen(
-	fourtune_session, op
+	fourtune_session: Session, op: string
 ) {
 	if (fourtune_session.is_frozen) {
 		throw new Error(
@@ -12,7 +13,7 @@ function checkFrozen(
 }
 
 export function createPublicInterfaceObject(
-	fourtune_session
+	fourtune_session: Session
 ) {
 	return {
 		// can be used by user
