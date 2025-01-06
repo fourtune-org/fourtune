@@ -82,6 +82,10 @@ export function createPublicInterfaceObject(
 				return fourtune_session.input.source_files
 			},
 
+			getFilteredSourceFiles() {
+				return fourtune_session.input.source_files_filtered
+			},
+
 			getAssetFiles() {
 				return fourtune_session.input.assets
 			}

@@ -69,6 +69,7 @@ export async function createFourtuneSession(
 
 		input: {
 			source_files: null,
+			source_files_filtered: null,
 			assets: null
 		},
 

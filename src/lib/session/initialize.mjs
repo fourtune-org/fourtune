@@ -111,6 +111,35 @@ export async function initialize(
 		...source_files
 	]
 
+	if ("inputSourceFileFilter" in integration) {
+		const {inputSourceFileFilter} = integration
+		let filteredInputFiles = []
+
+		for (const file of fourtune_session.input.source_files) {
+			const keep = await inputSourceFileFilter(file)
+
+			// only print warning if keep is 'false'
+			// don't print warning if keep is 'null'
+			if (keep === false) {
+				fourtune_session.public_interface.emit.warning(
+					undefined, `Ignoring unsupported file '${file.source}'.`
+				)
+			}
+
+			if (keep !== true) continue
+
+			filteredInputFiles.push(file)
+		}
+
+		fourtune_session.input.source_files_filtered = filteredInputFiles
+	} else {
+		fourtune_session.public_interface.emit.warning(
+			undefined, `Realm did not set "inputSourceFileFilter".`
+		)
+
+		fourtune_session.input.source_files_filtered = []
+	}
+
 	await integration.initialize(
 		...hook_args,
 		fourtune_session.input.assets,
