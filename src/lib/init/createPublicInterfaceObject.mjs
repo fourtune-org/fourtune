@@ -36,6 +36,17 @@ export function createPublicInterfaceObject(
 			return {}
 		},
 
+		// provide new .emit API early
+		emit: {
+			warning(id, message) {
+				process.stderr.write(`$ fourtune [warning] ${message}\n`)
+			},
+
+			error(id, message) {
+				process.stderr.write(`$ fourtune [error] ${message}\n`)
+			}
+		},
+
 		emitWarning(id, meta) {
 			process.stderr.write(
 				`[warning] ${id} ${JSON.stringify(meta)}\n`
