@@ -38,6 +38,19 @@ async function processFile(fourtune_session, src, dest) {
 		source = source.toString()
 
 		// todo: do preprocessing
+		if ("preprocessCode" in fourtune_session.realm.integration) {
+			const {preprocessCode} = fourtune_session.realm.integration
+
+			let rel_src = src
+
+			if (rel_src.startsWith(fourtune_session.project.root + "/")) {
+				rel_src = rel_src.slice(fourtune_session.project.root.length + 1)
+			}
+
+			source = await preprocessCode(
+				fourtune_session.public_interface, rel_src, source
+			)
+		}
 	}
 
 	await writeAtomicFile(
