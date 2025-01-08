@@ -20,3 +20,9 @@ First make sure to have `node` and `npm` installed.
 After this, you can install fourtune locally in your project:
 
 `$ npm install --save-dev fourtune @fourtune/core`
+
+## Supported Languages
+
+• TypeScript
+
+• C (coming soon)
