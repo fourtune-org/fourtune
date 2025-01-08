@@ -55,7 +55,7 @@ In a C project, a single `input.c` file will be converted into one file: `file.o
 
 In a web project, a single `Component.vue` file may be converted into three files: `Component.css`, `Component.mjs` and `Component.d.mts`.
 
-## Why realm dependencies are not part of the `package.json` / `package-lock.json`
+## Why realm dependencies are not part of `package.json` / `package-lock.json`
 
 This has more than one reason, but the main reason is that some packages (like `rollup`) install dependencies 
 that are dependent on the properties of your development machine (for example architecture or operating system).
