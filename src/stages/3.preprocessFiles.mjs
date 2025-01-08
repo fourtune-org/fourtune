@@ -37,7 +37,8 @@ async function processFile(fourtune_session, src, dest) {
 	if (canPreprocess(src)) {
 		source = source.toString()
 
-		// todo: do preprocessing
+		// todo: call user preprocessing?
+		// todo: replacment of BUILD_CONSTANTS?
 		if ("preprocessCode" in fourtune_session.realm.integration) {
 			const {preprocessCode} = fourtune_session.realm.integration
 
