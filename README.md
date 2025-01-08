@@ -16,7 +16,9 @@ fourtune aspires to handle the full stack of software development:
 
 • ci/cd
 
-One property of fourtune is that it makes opinionated choices about your project and therefore streamlines project development.
+One property of fourtune is that it makes opinionated choices about your source code and project structure, therefore streamlining project development.
+
+This tool was born to bootstrap the [anio.software](https://github.com/anio-software) project.
 
 ## How to use it
 
