@@ -26,7 +26,13 @@ First make sure to have `node` and `npm` installed.
 
 After this, you can install fourtune locally in your project:
 
-`$ npm install --save-dev fourtune @fourtune/core`
+`$ npm install --save-dev fourtune`
+
+fourtune uses "realms" to differentiate between project types.
+
+For a TypeScript project you want to install `@fourtune/realm-js`:
+
+`$ npm install --save-dev @fourtune/realm-js`.
 
 ## Supported Languages and Environments
 
