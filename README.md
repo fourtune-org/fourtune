@@ -29,3 +29,14 @@ After this, you can install fourtune locally in your project:
 • TypeScript
 
 • C (coming soon)
+
+## The principle behind fourtune
+
+The basic principle of fourtune remains the same regardless of realm:
+
+Source files are pre-processed, converted into one or more object file(s) and then
+combined into distributables.
+
+One or more distributable make up a product.
+
+For example, in a TypeScript project, a single `input.mts` file will be converted into two object files: `input.d.mts` and `input.mjs`.
