@@ -42,6 +42,8 @@ For a TypeScript library project you want to install [`@fourtune/realm-js`](http
 
 ## The principle behind fourtune
 
+![Diagram](./diagram.png)
+
 The basic principle of fourtune remains the same regardless of realm:
 
 Source files are pre-processed, converted into one or more object file(s) and are then
