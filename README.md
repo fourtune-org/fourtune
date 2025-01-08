@@ -1,5 +1,8 @@
 # 🍀 fourtune project builder
 
+> [!WARNING]  
+> 🚧 This project is still heavily under construction and not ready for any real serious project.
+
 ## What is fourtune?
 
 `fourtune` is a project builder written in JavaScript (soon to be written in TypeScript) 
