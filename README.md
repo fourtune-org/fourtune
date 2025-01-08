@@ -42,7 +42,7 @@ For a TypeScript library project you want to install [`@fourtune/realm-js`](http
 
 ## The principle behind fourtune
 
-![Diagram](./diagram.png)
+![Diagram](./diagram.svg)
 
 The basic principle of fourtune remains the same regardless of realm:
 
