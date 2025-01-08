@@ -53,6 +53,8 @@ For example, in a TypeScript project, a single `input.mts` file will be converte
 
 In a C project, a single `input.c` file will be converted into one file: `file.o`.
 
+In a web project, a single `Component.vue` file may be converted into three files: `Component.css`, `Component.mjs` and `Component.d.mts`.
+
 ## Why realm dependencies are not part of the `package.json` / `package-lock.json`
 
 This has more than one reason, but the main reason is that some packages (like `rollup`) install dependencies 
