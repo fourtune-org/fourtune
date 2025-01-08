@@ -69,3 +69,11 @@ This **is** fixable but requires to fiddle with the `package.json`, not somethin
 In order to prevent that for happening, an abstraction layer (called [`@fourtune/core`](https://github.com/fourtune-org/core)) is used that installs realm dependencies in the `.fourtune/` folder.
 
 This also means, realm dependencies are tied to a project and cannot be easily be changed without re-initializing the whole project.
+
+## 🌱 About the author
+
+This software is written and maintained by [anio.software](https://github.com/anio-software).
+
+An organization that aims to write clean code, eliminate technical debt and is selective about its dependencies.
+
+🇨🇭 [anio.software](https://anio.software) is an upcoming swiss based software author.
