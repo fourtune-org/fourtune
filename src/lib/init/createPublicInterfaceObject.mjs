@@ -26,6 +26,10 @@ export function createPublicInterfaceObject(
 			return fourtune_session.project.config
 		},
 
+		getProjectPackageJSON() {
+			return fourtune_session.project.packageJSON
+		},
+
 		getRealmOptions() {
 			const {realm} = fourtune_session.project.config
 

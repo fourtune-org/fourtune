@@ -59,7 +59,8 @@ export async function createFourtuneSession(
 	const session = {
 		project: {
 			root: resolved_project_root,
-			config: project_config
+			config: project_config,
+			packageJSON: project_package_json
 		},
 
 		raw_input: {
