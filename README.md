@@ -30,7 +30,7 @@ After this, you can install fourtune locally in your project:
 
 fourtune uses "realms" to differentiate between project types.
 
-For a TypeScript project you want to install `@fourtune/realm-js`:
+For a TypeScript library project you want to install `@fourtune/realm-js`:
 
 `$ npm install --save-dev @fourtune/realm-js`.
 
