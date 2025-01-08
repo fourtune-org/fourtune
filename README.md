@@ -8,5 +8,7 @@ that aims to build projects across various environments and languages.
 fourtune aspires to handle the full stack of software development:
 
 • unit testing, e2e testing
+
 • documentation
+
 • deployment
