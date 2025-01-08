@@ -52,3 +52,11 @@ One or more distributable make up a product.
 For example, in a TypeScript project, a single `input.mts` file will be converted into two object files: `input.d.mts` and `input.mjs`.
 
 In a C project, a single `input.c` file will be converted into one file: `file.o`.
+
+## Why realm dependencies are not part of the `package.json` / `package-lock.json`
+
+This has more than one reason, but the main reason is that some packages (like `rollup`) install dependencies 
+that are dependent on the properties of your development machine (for example architecture or operating system).
+Since every dependency will be recorded in the `package-lock.json` installation may fail on a different system (like ci/cd environment).
+In order to prevent them for happening, an abstraction layer (called `@fourtune/core`) is used that installs realm dependencies in the `.fourtune/` folder.
+
