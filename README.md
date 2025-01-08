@@ -60,9 +60,10 @@ In a web project, a single `Component.vue` file may be converted into three file
 This has more than one reason, but the main reason is that some packages (like `rollup`) install dependencies 
 that are dependent on the properties of your development machine (for example architecture or operating system).
 
-Since every dependency will be recorded in the `package-lock.json` installation may fail on a different system (like ci/cd environment).
+Since every dependency will be recorded in the `package-lock.json` installation may fail on a different system (like a ci/cd environment).
 
 This **is** fixable but requires to fiddle with the `package.json`, not something I want or expect users to do.
 
 In order to prevent that for happening, an abstraction layer (called [`@fourtune/core`](https://github.com/fourtune-org/core)) is used that installs realm dependencies in the `.fourtune/` folder.
 
+This also means, realm dependencies are tied to a project and cannot be easily be changed without re-initializing the whole project.
