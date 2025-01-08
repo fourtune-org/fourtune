@@ -24,6 +24,8 @@ function canPreprocess(file_path) {
 		return true
 	} else if (file_path.endsWith(".vue")) {
 		return true
+	} else if (file_path.endsWith(".json")) {
+		return true
 	}
 
 	return false
