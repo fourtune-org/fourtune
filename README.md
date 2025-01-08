@@ -26,7 +26,7 @@ After this, you can install fourtune locally in your project:
 
 ## Supported Languages and Environments
 
-• TypeScript (both node and web [web coming soon])
+• [TypeScript](https://github.com/fourtune-org/realm-js) (both node and web [web coming soon])
 
 • C (coming soon)
 
