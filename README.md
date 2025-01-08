@@ -64,5 +64,5 @@ Since every dependency will be recorded in the `package-lock.json` installation 
 
 This **is** fixable but requires to fiddle with the `package.json`, not something I want or expect users to do.
 
-In order to prevent that for happening, an abstraction layer (called `@fourtune/core`) is used that installs realm dependencies in the `.fourtune/` folder.
+In order to prevent that for happening, an abstraction layer (called [`@fourtune/core`](https://github.com/fourtune-org/core)) is used that installs realm dependencies in the `.fourtune/` folder.
 
