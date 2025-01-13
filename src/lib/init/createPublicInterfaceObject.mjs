@@ -73,14 +73,6 @@ export function createPublicInterfaceObject(
 			return map.get(dependency_name).dependency
 		},
 
-		hooks: {
-			register(id, fn) {
-				checkFrozen(fourtune_session, "hooks.register")
-
-				fourtune_session.hooks.push({id, fn})
-			}
-		},
-
 		input: {
 			getSourceFiles() {
 				return fourtune_session.input.source_files
