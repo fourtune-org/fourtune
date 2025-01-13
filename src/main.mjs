@@ -23,9 +23,9 @@ export async function fourtune(
 		for (const {id, stage} of stages) {
 			console.log(id)
 
-			await runHooks(session, `${id}.pre`)
+			await runHooks(session, `pre-${id}`)
 			await stage(session)
-			await runHooks(session, `${id}.post`)
+			await runHooks(session, `post-${id}`)
 		}
 	} else {
 		await initProject(session.public_interface)
