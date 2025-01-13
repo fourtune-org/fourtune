@@ -3,9 +3,12 @@ export async function runHooks(
 ) {
 	console.log(`Running hook ${hook_id}`)
 
-	for (const hook of fourtune_session.hooks) {
-		if (hook.id === hook_id) {
-			await hook.fn(fourtune_session.public_interface)
-		}
+	if ("runHook" in fourtune_session.realm.integration) {
+		const {runHook} = fourtune_session.realm.integration
+
+		await runHook(
+			fourtune_session.public_interface,
+			hook_id
+		)
 	}
 }

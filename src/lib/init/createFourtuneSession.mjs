@@ -78,13 +78,11 @@ export async function createFourtuneSession(
 		// files_to_autogenerate,
 		// objects_to_generate, and
 		// products_to_generate, and
-		// hooks
 		is_frozen: false,
 
 		files_to_autogenerate: [],
 		objects_to_generate: [],
 		products_to_generate: [],
-		hooks: [],
 
 		core: {
 			api: (await loadProjectPackage(
